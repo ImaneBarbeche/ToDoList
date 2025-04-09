@@ -21,7 +21,7 @@
           const taskName = this.input.value;
           if (taskName !== "") {
             this.addTask(taskName);
-            this.input.value = ""; // Reset input
+            this.input.value = ""; // Réinitialiser l'input
           } else {
             alert("Veuillez entrer une tâche !");
           }
@@ -44,7 +44,7 @@
           const taskElement = document.createElement("div");
           taskElement.className = "task-item";
           if (task.completed) taskElement.classList.add("completed");
-          // Checkbox
+          
           const checkbox = document.createElement("input");
           checkbox.type = "checkbox";
           checkbox.checked = task.completed;
@@ -53,11 +53,11 @@
             this.render();
           });
 
-          // Label
+          
           const label = document.createElement("label");
           label.textContent = task.name;
 
-          // Bouton supprimer
+          
           const button = document.createElement("button");
           button.className = "btnSupprimer";
           button.textContent = "Supprimer";
