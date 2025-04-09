@@ -1,36 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
   <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
   <title>ToDoList</title>
 </head>
 
-<body>
+  <body>
 
-  <div class="main-container">
-    <div class="titredeliste" id="titredeliste">
-      <input type="text" id="titreListe" placeholder="Titre de la liste...">
-    </div>
-
-    <button class="boutonAjouter" id="ajouterTache">
-      <div class="sign">+</div>
-
-      <div class="text">Ajouter</div>
-
-    </button>
-
-    <input type="text" id="taskInput" placeholder="Ajouter une tâche...">
-
-    <div class="task-container" id="task-container">
-      <!-- <input type="checkbox" id="taskCheckbox" class="checkbox">
-             <label for="taskCheckbox" class="checkbox-label">Faire les courses</label> -->
-    </div>
-
-  </div>
+    <h1>Todo List</h1>
+    <input type="text" id="taskInput" placeholder="Nouvelle tâche">
+    <button id="ajouterTache">Ajouter tâche</button>
+    <div id="task-container"></div>
+  
 
 </body>
 

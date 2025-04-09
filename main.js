@@ -1,44 +1,76 @@
-let myBtn = document.getElementById("ajouterTache");
-let inputAdd = document.getElementById("taskInput");
-let inputTitle = document.getElementById("titreListe");
-let taskContainer = document.getElementById("task-container");
-let listTitle = document.getElementById("titredeliste");
+ class Task {
+      constructor(name, index) {
+        this.name = name;
+        this.completed = false;
+        this.index = index;
+      }
 
+      toggle() {
+        this.completed = !this.completed;
+      }
+    }
 
+    class TaskList {
+      constructor() {
+        this.tasks = [];
+        this.taskList = document.getElementById('task-container');
+        this.button = document.getElementById('ajouterTache');
+        this.input = document.getElementById('taskInput');
 
-
-myBtn.addEventListener("click", function () {
-    let inputValue = inputAdd.value;
-    if (inputValue !== "" && inputTitle.value !== "") {
-        newTask = document.createElement("input");
-        newTask.type = "checkbox";
-        newTask.className = "checkbox";
-        newTask.value = inputValue; 
-        newTask.id = inputValue;
-        
-        newLabel = document.createElement("label");
-        newLabel.innerHTML = inputValue;
-        newLabel.className = "label";
-        newLabel.setAttribute("for", inputValue);
-        
-        
-        taskContainer.append(newTask, newLabel);
-        listTitle.innerHTML = inputTitle.value;
-    } else if (inputTitle.value === "") {
-        alert("Veuillez entrer un titre de liste.");
-
-        } else {
-
-        alert("Veuillez entrer une tâche.");
-        }
-
-        checkbox.addEventListener("change", function () {
-            if (checkbox.checked) {
-                checkbox.parentNode.style.textDecoration = "line-through";
-            } else {
-                checkbox.parentNode.style.textDecoration = "none";
-            }
+        this.button.addEventListener('click', () => {
+          const taskName = this.input.value;
+          if (taskName !== "") {
+            this.addTask(taskName);
+            this.input.value = ""; // Reset input
+          } else {
+            alert("Veuillez entrer une tâche !");
+          }
         });
-    });
+      }
 
+      addTask(taskName) {
+        const index = this.tasks.length;
+        const task = new Task(taskName, index);
+        this.tasks.push(task);
+        this.render();
+      }
 
+      render() {
+        // Vider l'affichage actuel
+        this.taskList.innerHTML = "";
+
+        // Afficher chaque tâche
+        this.tasks.forEach((task, index) => {
+          const taskElement = document.createElement("div");
+          taskElement.className = "task-item";
+          if (task.completed) taskElement.classList.add("completed");
+          // Checkbox
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = task.completed;
+          checkbox.addEventListener("change", () => {
+            task.toggle();
+            this.render();
+          });
+
+          // Label
+          const label = document.createElement("label");
+          label.textContent = task.name;
+
+          // Bouton supprimer
+          const button = document.createElement("button");
+          button.className = "btnSupprimer";
+          button.textContent = "Supprimer";
+          button.addEventListener("click", () => {
+            this.tasks.splice(index, 1);
+            this.render();
+          });
+
+          taskElement.append(checkbox, label, button);
+          this.taskList.append(taskElement);
+        });
+      }
+    }
+
+    // Initialiser la todo list
+    const taskList = new TaskList();
