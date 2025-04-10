@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,42 +7,100 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
+  font-family: 'Patrick Hand', cursive;
+  background-color: #f2f1eb;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 420px;
+  background-color: #fff475;
+  border-radius: 12px;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+  padding: 25px 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #444;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.inside-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 #taskInput {
-  padding: 8px;
-  font-size: 16px;
+  flex: 1;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #fffbe6;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+#taskInput:focus {
+  outline: 2px dashed #888;
 }
 
 #ajouterTache {
-  padding: 8px 12px;
+  padding: 10px 14px;
+  background-color: #ffb347;
+  color: #333;
   font-size: 16px;
-  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+}
+
+#ajouterTache:hover {
+  background-color: #ffa033;
+}
+
+#task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .task-item {
-  margin-top: 10px;
+  background-color: #fffca8;
+  border-radius: 8px;
+  padding: 10px 12px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .task-item.completed label {
   text-decoration: line-through;
-  color: gray;
+  color: #888;
 }
 
 .btnSupprimer {
-  margin-left: auto;
-  background-color: red;
-  color: white;
+  background-color: #ff7070;
   border: none;
-  padding: 4px 8px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
 }
 
 .btnSupprimer:hover {
-  background-color: darkred;
+  background-color: #e55b5b;
 }
