@@ -60,7 +60,7 @@
           
           const button = document.createElement("button");
           button.className = "btnSupprimer";
-          button.textContent = "Supprimer";
+          button.textContent = "x";
           button.addEventListener("click", () => {
             this.tasks.splice(index, 1);
             this.render();
